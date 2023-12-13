@@ -22,6 +22,7 @@ public class ChipService {
 
     @GetMapping("/types")
     public List<String> getAllChipTypes() {
+        System.out.println(chipRepository.getAllChipTypes());
         return chipRepository.getAllChipTypes();
     }
 

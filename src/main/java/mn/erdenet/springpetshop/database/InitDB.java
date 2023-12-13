@@ -36,14 +36,17 @@ public class InitDB {
 
         try {
             owners = mapper.readValue(customerInputStream, new TypeReference<List<Owner>>() {});
-            //System.out.println("Balls " + mapper.readValue(customerInputStream, new TypeReference<List<Owner>>() {}));
-            //owners = Arrays.asList(mapper.readValue(customerInputStream, Owner[].class));
-            //owners = mapper.readerForListOf(Owner.class).readValue(customerInputStream);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        owners.forEach(o -> o.getPetList().forEach(p -> p.setOwner(o)));
+
+        System.out.println();
+
+        owners.forEach(o -> o.getPetList().forEach(p -> {
+            p.setOwner(o);
+            System.out.println("balsl" + p.getChip());
+        }));
         ownerRepository.saveAll(owners);
 
         System.out.println(owners);

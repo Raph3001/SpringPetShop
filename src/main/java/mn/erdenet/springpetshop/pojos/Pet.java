@@ -2,6 +2,7 @@ package mn.erdenet.springpetshop.pojos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import jakarta.persistence.*;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Pet {
 
     @Id
@@ -27,7 +29,7 @@ public class Pet {
     private Owner owner;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @JoinColumn(name = "chip_id")
-    @JsonIgnore
+    @JsonManagedReference
     private Chip chip;
     private String name;
     @JsonFormat(pattern = "dd/MM/yyyy")

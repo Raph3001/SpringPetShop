@@ -1,4 +1,5 @@
 package mn.erdenet.springpetshop.pojos;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,6 +15,7 @@ public class Chip {
     private String type;
     @OneToOne(mappedBy = "chip")
     @ToString.Exclude
+    @JsonBackReference
     private Pet pet;
 
 }
